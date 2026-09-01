@@ -1,0 +1,45 @@
+Assembly
+USER MANUAL!!!
+    
+-  NOT Case Sensitive
+-  27 registers R-13 ... R13
+-  "Rn" = call a register to read / write (n represents integer [-13,13])
+-  ALU operates on two values
+    
+Syntax:
+    Loading a register:
+        "LDI" = (load immediate)
+        LDI | Destination Register | Data
+        ex. "LDI r0 12"
+        R0 := 12
+    ALU Operations:
+        see ALU_ROM in alu.py for all operations
+        ADD, AND, NOR...
+        Operation | Operand1 | Operand2 | Write
+        ex. ADD r2 r3 r5
+        R5 := R2 + R3
+    ADI:
+        Add a value directly to a register
+        ADI | Target | Data
+        ex. ADI r2 5
+        R2 := R2 + 5
+    JMP:
+        Jump to a specific line of code
+        WILL loop forever
+        JMP | Line (first is 0)
+    NOP:
+        Nothing happens, skip over line
+        NOP
+    HLT:
+        Halts the code
+        HLT
+    BRH:
+        Branching operation
+        BRH | Condition | Direct JMP if
+        Conditions are based off most recent register
+        Condition List:
+            zero: Rn = 0
+            nzero: Rn not= 0
+            crry: Rn carry beyond 6th trit
+            ncrry: No Rn carry beyond 6th trit
+        ex. BRH zero 6
